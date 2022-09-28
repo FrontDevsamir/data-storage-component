@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --gradient: linear-gradient(
+        90deg,
+        hsl(6, 100%, 80%) ,
+        hsl(335, 100%, 65%)
+    ) ;
+
+    --pale-blue: hsl(243, 100%, 93%);
+    --grayish-blue: hsl(229, 7%, 55%);
+    --dark-blue: hsl(228, 56%, 26%);
+    --very-dark-blue: hsl(229, 57%, 11%);
+}
+
+
+body, html {
+    min-height: 100vh;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em 0;
+    font-size: 14px;
+
+    font-family: 'Raleway', sans-serif;
+    color: var(--grayish-blue);
+    background-image: url('../images/bg-mobile.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-color: var(--very-dark-blue);
+}
+
+
+.component {
+    width: 85%;
+    max-width: 900px;
+    margin: auto;
+}
+
+
+.component__logos {
+    padding: 3em;
+    border-radius: 1em;
+    border-start-end-radius: 7em;
+    margin-bottom: 1em;
+
+    background-color: var(--dark-blue);
+}
+
+.component__logos--logo {
+    margin-bottom: 2em;
+}
+
+.component__logos--icons {
+    display: flex;
+    gap: 1em;
+}
+
+.component__logos--icon {
+    background-color: var(--very-dark-blue);
+    padding: .9em;
+    border-radius: .5em;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.component__storage {
+    padding: 2em 2em 5em;
+    border-radius: 1em;
+    background-color: var(--dark-blue);
+    text-align: center;
+    position: relative;
+}
+
+.component__storage--title {
+    font-weight: 400;
+}
+
+.storage {
+    font-weight: 700;
+    color: var(--pale-blue);
+}
+
+.component__storage--progress {
+    width: 100%;
+    height: 20px;
+    background-color: var(--very-dark-blue);
+    border-radius: 1em;
+    margin: 1.5em 0 .5em;
+    padding: .2em;
+}
+
+.progress--complet {
+    width: 0%;
+    overflow: hidden;
+    height: 100%;
+    background: var(--gradient);
+    border-radius: 1em;
+    padding: .15em;
+    animation: progress 8s infinite alternate linear;
+}
+
+
+
+@keyframes progress {
+    0% {
+        width: 0%;
+    }
+
+    40% {
+        width: 40%;
+    }
+
+    80% {
+        width: 70%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.progress--complet--circle {
+    background-color: var(--pale-blue);
+    height: 100%;
+    width: 12px;
+    border-radius: 50%;
+    margin-left: auto;
+}
+
+
+
+.start-end {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+}
+
+.component__storage--start {
+    color: cyan;
+}
+
+.component__storage--end {
+    color: orangered;
+}
+
+.component__storage--absolute {
+    position: absolute;
+    content: '';
+    width: 200px;
+    background-color: var(--pale-blue);
+    padding: 1em;
+    left: 50%;
+    bottom: -13%;
+    transform: translateX(-50%);
+    font-weight: 700;
+    border-radius: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.GB {
+    font-size: 40px;
+    margin-right: .2em;
+    color: var(--very-dark-blue);
+}
+
+
+.attribution {
+    margin-top: 2em;
+    text-align: center;
+    color: var(--grayish-blue);
+}
+
+.attribution a {
+    color: var(--grayish-blue);
+    font-weight: 700;
+}
+
+
+
+/* Responsive */
+@media screen and (min-width: 700px) {
+
+    body {
+        background-image: url('../images/bg-desktop.png')
+    }
+
+    .component {
+        display: flex;
+        align-items: flex-end;
+        gap: 2em;
+    }
+
+    .component__storage {
+        flex: 1;
+    }
+
+    .component__logos {
+        margin: 0;
+        flex: .6;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .component__storage--absolute {
+        bottom: unset;
+        left: unset;
+        right: 40px;
+        top: -30%;
+        transform: translate(0);
+    }
+
+    .component__storage--absolute::after {
+        content: '';
+        position: absolute;
+        width: 30px;
+        height: 40px;
+        background-color: transparent;
+        top: 85%;
+        right: 0;
+        z-index: 10;
+        border: 20px solid transparent;
+        border-right-color: var(--pale-blue);
+        border-top-color: var(--pale-blue);
+    }
+
+    .component__storage {
+        padding: 3em;
+        text-align: left;
+    }
+}
